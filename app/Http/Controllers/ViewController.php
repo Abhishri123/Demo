@@ -25,14 +25,21 @@ public function index(){
         $parser->parseString($file);
         $entries = $listener->export();
         echo "<pre>";
-        print_r($entries);
-        //  foreach ($entries as $entry) {
+        // print_r($entries);
+    }
+        function html_table($entries = array())
+{
+    $rows = array();
+    foreach ($entries as $row) {
+        $cells = array();
+        foreach ($row as $cell) {
+            $cells[] = "<td>{$cell}</td>";
+        }
+        $rows[] = "<tr>" . implode('', $cells) . "</tr>";
 
-        //             return view('view',['entries'=>$entries]);
-        //      }
-       print_r("<table border='1'>
-       <tr>
-     <th>Id</th>
+    }
+return "<table border='1' 
+<th>   </th>
 <th>_Type</th>
 <th>Type</th> 
 <th>Citation-key</th>
@@ -46,15 +53,21 @@ public function index(){
 <th>Note</th>
 <th>Url</th>
 <th>Document Type</th>
-<th>Source</th>
-       </tr>
-       <tr>
-       <td></td>
-       </tr>
-              </table>");
+<th>Source</th> " . implode('', $rows) . "</table>";
+}
+        echo html_table($entries);
+       
+        // return view('view',['articles'=>$articles]);
+        //  foreach ($entries as $entry) {
 
-    }
+        //             return view('view',['entries'=>$entries]);
+        //      }
+     "( <div>
+   
+      </div> )";
+
     
    }
 }
+
     
