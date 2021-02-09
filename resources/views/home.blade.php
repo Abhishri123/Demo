@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        
+        <title>Task</title>
+        <script>
+   function exportTasks(_this) {
+      let _url = $(_this).data('href');
+      window.location.href = _url;
+   }
+</script>
+    </head>
+    <body>
 @extends('layouts.app')
 
 @section('content')
@@ -25,7 +38,12 @@
 				                <tr>
 				                <th>View</th>
 				                <td> <a href="{{ route('view-records') }}">View Article</a> </td>
-				                </tr>
+                                <tr>
+                                <th>Export</th>
+                                <td> <a href="{{ route('exportFile') }}">Export Article</a> </td>
+                                 </tr>
+                                </tr>
+                                
 </table>
 
             </div>
@@ -33,3 +51,5 @@
     </div>
 </div>
 @endsection
+</body>
+</html>

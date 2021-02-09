@@ -5,15 +5,20 @@ use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Storage;
+use Maatwebsite\Excel\Facades\Excel;
 use RenanBr\BibTexParser\Listener;
 use RenanBr\BibTexParser\Parser;
 use RenanBr\BibTexParser\Processor;
+use App\Exports\FilesExport;
+// use SoapBox\Formatter\Formatter;
+
+
 
 class ViewController extends Controller {
+    public function createForm(){
+        return view('export-file');
+      }
 public function index(){
-//     $articles = DB::select('select * from files');
-// return view('view',['articles'=>$articles]);
-
 
     $articles = DB::select('select * from files');
     foreach ($articles as $article) {
@@ -24,11 +29,12 @@ public function index(){
         $parser->addListener($listener);
         $parser->parseString($file);
         $entries = $listener->export();
-        echo "<pre>";
-        // print_r($entries);
+         echo "<pre>";
+        //   print_r($entries);
     }
+    
         function html_table($entries = array())
-{
+      {
     $rows = array();
     foreach ($entries as $row) {
         $cells = array();
@@ -54,20 +60,41 @@ return "<table border='1'
 <th>Url</th>
 <th>Document Type</th>
 <th>Source</th> " . implode('', $rows) . "</table>";
-}
-        echo html_table($entries);
-       
-        // return view('view',['articles'=>$articles]);
-        //  foreach ($entries as $entry) {
 
-        //             return view('view',['entries'=>$entries]);
-        //      }
-     "( <div>
-   
-      </div> )";
+}
+echo html_table($entries);
+
+}  
+
+ function exportFile(Request $request) {
+    $articles = DB::select('select * from files');
+    foreach ($articles as $article) {
+        $file = Storage::disk('local')->get('public/uploads/1612372173_scopus.bib');
+        $listener  = new Listener();
+        $listener->addProcessor(new Processor\TagNameCaseProcessor(CASE_LOWER));
+        $parser = new Parser();
+        $parser->addListener($listener);
+        $parser->parseString($file);
+        $entries = $listener->export();
+        echo "<pre>";
+        //  print_r($entries);
+          return Excel::download($entries, 'articleData.xlsx');
+
+        //   $formatter = Formatter::make($entries, Formatter::ARR);
+        //   $csv   = $formatter->toCsv();
+        //   $xml   = $formatter->toXml();
+          
+  }
+ }
+ 
+
+ }
+
+
+      
 
     
-   }
-}
+   
+
 
     
