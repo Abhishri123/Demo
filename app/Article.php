@@ -3,11 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Article extends Model
 {
-    use HasFactory;
+    // use HasFactory;
     protected $fillable = [
         '_type',
         'type',
@@ -22,7 +22,5 @@ class Article extends Model
         'url',
         'document_type',
         'source',
-
-
     ];  
 }

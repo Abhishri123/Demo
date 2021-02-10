@@ -5,14 +5,13 @@ use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Storage;
+use App\Article;
 use Maatwebsite\Excel\Facades\Excel;
 use RenanBr\BibTexParser\Listener;
 use RenanBr\BibTexParser\Parser;
 use RenanBr\BibTexParser\Processor;
 use App\Exports\FilesExport;
 // use SoapBox\Formatter\Formatter;
-
-
 
 class ViewController extends Controller {
     public function createForm(){
@@ -30,7 +29,7 @@ public function index(){
         $parser->parseString($file);
         $entries = $listener->export();
          echo "<pre>";
-          print_r($entries);
+        //   print_r($entries);
     }
     
         function html_table($entries = array())
@@ -64,48 +63,13 @@ return "<table border='1'
 }
 echo html_table($entries);
 
-}  
+} 
 
- function exportFile(Request $request) {
-    $articles = DB::select('select * from files');
-    foreach ($articles as $article) {
-        $file = Storage::disk('local')->get('public/uploads/1612372173_scopus.bib');
-        $listener  = new Listener();
-        $listener->addProcessor(new Processor\TagNameCaseProcessor(CASE_LOWER));
-        $parser = new Parser();
-        $parser->addListener($listener);
-        $parser->parseString($file);
-        $entries = $listener->export();
-        echo "<pre>";
-        //  print_r($entries);
-           return Excel::download($entries, 'articleData.xlsx');
-        // $entries = Article::create();
-
-        // DB::table('articles')->insert([
-        //     '_type' => $entries->_type,
-        //     'type' => $entries->type,
-        //     'citation_key' => $entries->citation_key,
-        //     'author' => $entries->author,
-        //     'title' => $entries->title,
-        //     'journal' => $entries->journal,
-        //     'year' => $entries->year,
-        //     'doi' => $entries->doi,
-        //     'art_number' => $entries->art_number,
-        //     'note' => $entries->note,
-        //     'url' => $entries->url,
-        //     'document_type' => $entries->document_type,
-        //     'source' => $entries->source,
-
-        // ]);
-        // //   $formatter = Formatter::make($entries, Formatter::ARR);
-        //   $csv   = $formatter->toCsv();
-        //   $xml   = $formatter->toXml();
-          
+  
   }
- }
+ 
  
 
- }
 
 
       

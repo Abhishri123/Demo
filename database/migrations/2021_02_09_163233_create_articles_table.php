@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string('_type');
             $table->string('type');
             $table->string('citation_key');
-            $table->string('author');
+            $table->text('author');
             $table->string('title');
             $table->string('journal');
             $table->string('year');
