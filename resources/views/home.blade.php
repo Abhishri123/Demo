@@ -33,19 +33,19 @@
 				                <tr>
 				                <th>Import</th>
 
-				                <td> <a href="{{ route('fileUpload') }}">Import Article</a> </td>
+				                <td> <a href="{{ route('create') }}">Import Article</a> </td>
 				                </tr>
 				                <tr>
 				                <th>View</th>
-				                <td> <a href="{{ route('view-records') }}">View Article</a> </td>
+				                <td> <a href="{{ route('getArticles') }}">View Article</a> </td>
                                 <tr>
                                 <th>Export</th>
                                 <td> <a href="{{ route('export') }}">Export Article</a> </td>
                                  </tr>
-                                 <tr>
+                                 <!-- <tr>
                                 <th>Insert</th>
                                 <td> <a href="{{ route('create') }}">Insert Article</a> </td>
-                                 </tr>
+                                 </tr> -->
                                 </tr>
                                 
 </table>

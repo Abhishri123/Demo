@@ -14,10 +14,13 @@ use App\Exports\FilesExport;
 // use SoapBox\Formatter\Formatter;
 
 class ViewController extends Controller {
-    public function createForm(){
-        return view('export-file');
-      }
-public function index(){
+    // public function createForm(){
+    //     return view('export-file');
+    //   }
+ public function index(){
+    // $articles = DB::select('select * from articles');
+    // return view('table',['articles'=>$articles]);
+ 
 
     $articles = DB::select('select * from files');
     foreach ($articles as $article) {
@@ -64,9 +67,9 @@ return "<table border='1'
 echo html_table($entries);
 
 } 
-
+}
   
-  }
+//   }
  
  
 

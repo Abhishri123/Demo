@@ -22,7 +22,7 @@
 <body>
 
     <div class="container mt-5">
-        <form action="{{route('fileUpload')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('create')}}" method="post" enctype="multipart/form-data">
           <h3 class="text-center mb-5">Choose File</h3>
             @csrf
             @if ($message = Session::get('success'))
