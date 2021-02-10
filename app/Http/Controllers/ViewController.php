@@ -30,7 +30,7 @@ public function index(){
         $parser->parseString($file);
         $entries = $listener->export();
          echo "<pre>";
-        //   print_r($entries);
+          print_r($entries);
     }
     
         function html_table($entries = array())
@@ -78,9 +78,26 @@ echo html_table($entries);
         $entries = $listener->export();
         echo "<pre>";
         //  print_r($entries);
-          return Excel::download($entries, 'articleData.xlsx');
+           return Excel::download($entries, 'articleData.xlsx');
+        // $entries = Article::create();
 
-        //   $formatter = Formatter::make($entries, Formatter::ARR);
+        // DB::table('articles')->insert([
+        //     '_type' => $entries->_type,
+        //     'type' => $entries->type,
+        //     'citation_key' => $entries->citation_key,
+        //     'author' => $entries->author,
+        //     'title' => $entries->title,
+        //     'journal' => $entries->journal,
+        //     'year' => $entries->year,
+        //     'doi' => $entries->doi,
+        //     'art_number' => $entries->art_number,
+        //     'note' => $entries->note,
+        //     'url' => $entries->url,
+        //     'document_type' => $entries->document_type,
+        //     'source' => $entries->source,
+
+        // ]);
+        // //   $formatter = Formatter::make($entries, Formatter::ARR);
         //   $csv   = $formatter->toCsv();
         //   $xml   = $formatter->toXml();
           
