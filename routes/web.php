@@ -56,10 +56,10 @@ Route::get('/excel', 'ExcelController@export')->name('export');
 // Route::get('/tasks', 'TempController@exportCsv');
 Route::get('/excel',[ExcelController::class,'export'])->name('export');
 Route::get('/excel', 'ExcelController@export')->name('excel');
+Route::get('records','TableController@index');
+Route::get('/records', 'TableController@getArticles')->name('records');
 
  Route::get('articles', [TableController::class, 'index']);
  Route::get('/articles',[TableController::class,'getArticles'])->name('getArticles');
-
-//  Route::get('articles/list', [TableController::class, 'getArticles'])->name('articles.list');
 Route::get('articles','TableController@index');
 Route::post('/articles', [TableController::class, 'getArticles'])->name('getArticles');
