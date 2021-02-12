@@ -79,10 +79,6 @@ class FileUpload extends Controller
     }
 
 }
-     public function show()
-     {
-           $url = Storage::url($fileModel );
-           return "<filePath ='".$url."'/>";
-     }
+    
 
 }

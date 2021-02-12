@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Models;
+namespace App;
+use Illuminate\Database\Eloquent\Factories;
 
 use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     // use HasFactory;
+    protected $table = "articles";
     protected $fillable = [
         '_type',
         'type',

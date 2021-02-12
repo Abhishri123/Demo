@@ -6,7 +6,8 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controller\TableController;
 use App\Http\Controller\ArticleController;
 use App\Http\Controller\ExcelController;
-
+use App\Http\Controller\ExportController;
+use App\Article;
 
 
 /*
@@ -59,7 +60,18 @@ Route::get('/excel', 'ExcelController@export')->name('excel');
 Route::get('records','TableController@index');
 Route::get('/records', 'TableController@getArticles')->name('records');
 
- Route::get('articles', [TableController::class, 'index']);
- Route::get('/articles',[TableController::class,'getArticles'])->name('getArticles');
-Route::get('articles','TableController@index');
+ Route::get('records', [TableController::class, 'index']);
+ Route::get('/records',[TableController::class,'getArticles'])->name('getArticles');
+Route::get('records','TableController@index');
 Route::post('/articles', [TableController::class, 'getArticles'])->name('getArticles');
+Route::get('article', array('as' => 'get.article', 'uses' => 'TableController@returnAjaxData'));
+// Route::get('table', ['uses'=>'TableController@index', 'as'=>'table.index']);
+Route::get('/temp',function(){
+//  $results = \App\Models\Article::all();
+     $data=Article::all();
+    return view('table')->withData($data);
+});
+Route::resource('table','ExportController');
+Route::get('view-export', [ExportController::class, 'index']);
+Route::get('view-export', 'ExportController@index')->name('view-export');
+

@@ -1,77 +1,31 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <title> Articles </title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
-    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> 
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" /> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css"> 
+    <script src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script> 
+    <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
     </head>
 <body>
-    
-<div class="container mt-5">
-    <h2 class="mb-4">Articles</h2>
-    <table class="table table-bordered yajra-datatable">
-        <thead>
-            <tr>
-            <th>No</th>
-            <th>_Type</th>
-            <th>Type</th> 
-            <th>Citation-key</th>
-            <th>Author</th>
-            <th>Title</th>
-            <th>Journal</th>
-            <th>Year</th>
-            <th>Doi</th>
-            <th>Art number</th>
-            <th>Note</th>
-            <th>Url</th>
-            <th>Document Type</th>
-            <th>Source</th>
-            <th>Action</th>
-
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-</div>
-   
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-
-<script type="text/javascript">
-  $(function () {
-    
-    var table = $('.yajra-datatable').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('getArticles') }}",
-        columns: [
-            {data: 'id', name: 'id'},
-            {data: '_type', name: '_type'},
-            {data: 'type', name: 'type'},
-            {data: 'citation_key', name: 'citation_key'},
-            {data: 'author', name: 'author'},
-            {data: 'title', name: 'title'},
-            {data: 'journal', name: 'journal'},
-            {data: 'year', name: 'year'},
-            {data: 'doi', name: 'doi'},
-            {data: 'art_number', name: 'art_number'},
-            {data: 'note', name: 'note'},
-            {data: 'url', name: 'url'},
-            {data: 'document_type', name: 'document_type'},
-            {data: 'source', name: 'source'}
-            
-        ]
-    });
-    
-  });
-  console.log('h',"{{ route('getArticles') }}");
-</script>
-
+<div class="container"> <br /> 
+<h3 align="center">View & Export</h3> <br /> 
+    <div class="table-responsive"> 
+        <div class="panel panel-default"> 
+            <div class="panel-heading">Articles Data</div> 
+                <div class="panel-body"> 
+                    {!! $dataTable->table() !!} 
+                    {!! $dataTable->scripts() !!} 
+                </div> 
+            </div> 
+        </div> 
+        <br /> <br /> 
+    </div> 
+</body> 
 </html>

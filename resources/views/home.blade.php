@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+    <style>
+.circle {
+  /* (A) SAME WIDTH & HEIGHT - SQUARE */
+  width: 210px;
+  height: 150px;
+ 
+  /* (B) 50% RADIUS = CIRCLE */
+  border-radius: 50%;
+ 
+  /* (C) BACKGROUND COLOR */
+  background: #d3d3d3;
+  line-height: 150px;
+  text-align: center;
+  font-size: 20px;
+  font-weight:bold;
+
+}
+</style>
         
         <title>Task</title>
         <script>
@@ -29,26 +47,37 @@
 
                     {{ __('You are logged in!') }}
                 </div>
-                <table border="1">
+                <table>
+                <tr>
+                &nbsp;&nbsp;
+                <td>
+                
+                <div class="circle" >
+            <a href="{{ route('fileUpload') }}">Import Article</a>
+                </div>
+                </td>
+                <td>
+                <div class="circle">
+                <h2></h2>
+                <a href="{{ route('view-export') }}">View Article</a>
+                </div>
+                </td>
+                </tr>
+                </table>
+                <!-- <table border="1">
 				                <tr>
 				                <th>Import</th>
 
-				                <td> <a href="{{ route('create') }}">Import Article</a> </td>
+				                <td> <a href="{{ route('fileUpload') }}">Import Article</a> </td>
 				                </tr>
 				                <tr>
 				                <th>View</th>
-				                <td> <a href="{{ route('view-records') }}">View Article</a> </td>
-                                <tr>
-                                <th>Export</th>
-                                <td> <a href="{{ route('export') }}">Export Article</a> </td>
-                                 </tr>
-                                 <!-- <tr>
-                                <th>Insert</th>
-                                <td> <a href="{{ route('create') }}">Insert Article</a> </td>
-                                 </tr> -->
+				                <td> <a href="{{ route('view-export') }}">View Article</a> </td>
+                              
                                 </tr>
                                 
-</table>
+                                
+</table> -->
 
             </div>
         </div>
