@@ -3,19 +3,15 @@
     <head>
     <style>
 .circle {
-  /* (A) SAME WIDTH & HEIGHT - SQUARE */
   width: 210px;
   height: 150px;
- 
-  /* (B) 50% RADIUS = CIRCLE */
   border-radius: 50%;
- 
-  /* (C) BACKGROUND COLOR */
   background: #d3d3d3;
   line-height: 150px;
   text-align: center;
   font-size: 20px;
   font-weight:bold;
+  
 
 }
 </style>
@@ -64,22 +60,7 @@
                 </td>
                 </tr>
                 </table>
-                <!-- <table border="1">
-				                <tr>
-				                <th>Import</th>
-
-				                <td> <a href="{{ route('fileUpload') }}">Import Article</a> </td>
-				                </tr>
-				                <tr>
-				                <th>View</th>
-				                <td> <a href="{{ route('view-export') }}">View Article</a> </td>
-                              
-                                </tr>
-                                
-                                
-</table> -->
-
-            </div>
+          </div>
         </div>
     </div>
 </div>
